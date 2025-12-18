@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MYB - Creative Writing & Storytelling</title>
+    <meta name="description" content="MYB - Your creative writing and storytelling platform. Discover amazing stories, read online for free, and download for offline reading.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://www.genspark.ai/api/files/s/V1iPDOYw">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <div class="nav-brand" onclick="navigateTo('home')">
+                <img src="assets/myb-logo-full.jpg" alt="MYB Logo" class="brand-logo" id="nav-logo-img"
+                     onerror="this.src='https://www.genspark.ai/api/files/s/V1iPDOYw'">
+                <span class="brand-name">MYB</span>
+            </div>
+            
+            <div class="nav-search">
+                <i class="fas fa-search"></i>
+                <input type="text" id="nav-search-input" placeholder="Search books, authors, genres...">
+            </div>
+            
+            <!-- Always Visible Menu Items -->
+            <div class="nav-menu">
+                <a href="#home" class="nav-link active" data-page="home">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="#library" class="nav-link" data-page="library">
+                    <i class="fas fa-book"></i>
+                    <span>Library</span>
+                </a>
+                <a href="#mylibrary" class="nav-link" data-page="mylibrary">
+                    <i class="fas fa-bookmark"></i>
+                    <span>My Books</span>
+                </a>
+                <a href="#profile" class="nav-link" data-page="profile">
+                    <i class="fas fa-user-circle"></i>
+                    <span>Profile</span>
+                </a>
+                <!-- Admin menu item - only visible to admins -->
+                <a href="#admin" class="nav-link admin-menu-item" data-page="admin" style="display: none;">
+                    <i class="fas fa-crown"></i>
+                    <span>Admin Dashboard</span>
+                </a>
+            </div>
+
+            <!-- Hamburger Menu for Additional Options -->
+            <div class="hamburger-menu" id="hamburger-menu">
+                <!-- Normal User Options -->
+                <div class="hamburger-section">
+                    <a href="#pdf-library" class="hamburger-link" data-page="pdf-library">
+                        <i class="fas fa-file-pdf"></i>
+                        <span>PDF Stories</span>
+                    </a>
+                    <a href="#forum" class="hamburger-link" data-page="forum">
+                        <i class="fas fa-comments"></i>
+                        <span>Forum</span>
+                    </a>
+                    <a href="#contests" class="hamburger-link" data-page="contests">
+                        <i class="fas fa-trophy"></i>
+                        <span>Contests</span>
+                    </a>
+                    <a href="#writing-guidelines" class="hamburger-link" data-page="writing-guidelines">
+                        <i class="fas fa-pen-fancy"></i>
+                        <span>Writing Guidelines</span>
+                    </a>
+                    <a href="#author-resources" class="hamburger-link" data-page="author-resources">
+                        <i class="fas fa-tools"></i>
+                        <span>Author Resources</span>
+                    </a>
+                </div>
+
+                <!-- Support Section -->
+                <div class="hamburger-section">
+                    <div class="hamburger-section-title">Support</div>
+                    <a href="#help" class="hamburger-link" data-page="help">
+                        <i class="fas fa-question-circle"></i>
+                        <span>Help Center</span>
+                    </a>
+                    <a href="#contact" class="hamburger-link" data-page="contact">
+                        <i class="fas fa-envelope"></i>
+                        <span>Contact Us</span>
+                    </a>
+                    <a href="#" class="hamburger-link" data-action="report">
+                        <i class="fas fa-flag"></i>
+                        <span>Report Content</span>
+                    </a>
+                </div>
+
+                <!-- Legal Section -->
+                <div class="hamburger-section">
+                    <div class="hamburger-section-title">Legal</div>
+                    <a href="#" class="hamburger-link" data-action="privacy">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Privacy Policy</span>
+                    </a>
+                    <a href="#" class="hamburger-link" data-action="terms">
+                        <i class="fas fa-file-contract"></i>
+                        <span>Terms of Service</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Admin Menu - Only visible to admins -->
+            <div class="admin-menu" id="admin-menu" style="display: none;">
+                <div class="admin-menu-header">
+                    <i class="fas fa-crown"></i>
+                    <span>Admin Panel</span>
+                </div>
+                <div class="admin-menu-items">
+                    <a href="#admin-dashboard" class="admin-menu-link" data-admin-page="dashboard">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="#admin-approve" class="admin-menu-link" data-admin-page="approve">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Approve User Stories</span>
+                    </a>
+                    <a href="#admin-users" class="admin-menu-link" data-admin-page="users">
+                        <i class="fas fa-users"></i>
+                        <span>Manage Users</span>
+                    </a>
+                    <a href="#admin-reports" class="admin-menu-link" data-admin-page="reports">
+                        <i class="fas fa-flag"></i>
+                        <span>Reports & Moderation</span>
+                    </a>
+                    <a href="#admin-analytics" class="admin-menu-link" data-admin-page="analytics">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Analytics</span>
+                    </a>
+                    <a href="#admin-settings" class="admin-menu-link" data-admin-page="settings">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="nav-actions">
+                <button class="btn-icon" id="notifications-btn" title="Notifications" style="display: none; position: relative;">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge" id="notification-count" style="display: none;">0</span>
+                </button>
+                <button class="btn-icon" id="messages-btn" title="Messages" style="display: none; position: relative;">
+                    <i class="fas fa-envelope"></i>
+                    <span class="notification-badge" id="message-count" style="display: none;">0</span>
+                </button>
+                <button class="btn-icon" id="theme-toggle" title="Toggle Dark Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="btn-primary" id="auth-btn">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Sign In
+                </button>
+                <!-- Hamburger Menu Toggle -->
+                <button class="menu-toggle-btn" id="hamburger-toggle" title="More Options">
+                    <i class="fas fa-ellipsis-v"></i>
+                </button>
+            </div>
+
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main id="main-content">
+        <!-- Home Page -->
+        <div id="home-page" class="page active">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="container">
+                    <div class="hero-content">
+                        <h1 class="hero-title">Creative Writing & <span class="highlight">Storytelling</span></h1>
+                        <p class="hero-subtitle">Discover amazing stories from talented writers. Read online for free or download your favorites for offline reading.</p>
+                        <div class="hero-cta">
+                            <button class="btn-large btn-primary" data-page="library">
+                                <i class="fas fa-book-reader"></i>
+                                Browse Library
+                            </button>
+                            <button class="btn-large btn-outline" data-page="library">
+                                <i class="fas fa-fire"></i>
+                                Trending Now
+                            </button>
+                        </div>
+                        <div class="hero-stats">
+                            <div class="stat">
+                                <strong>1M+</strong>
+                                <span>Stories</span>
+                            </div>
+                            <div class="stat">
+                                <strong>50M+</strong>
+                                <span>Readers</span>
+                            </div>
+                            <div class="stat">
+                                <strong>100+</strong>
+                                <span>Genres</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Book of the Week Section -->
+            <section class="section book-of-week-section" id="book-of-week-section" style="display: none;">
+                <div class="container">
+                    <div class="book-of-week-card" id="book-of-week-card"></div>
+                </div>
+            </section>
+
+            <!-- Featured Books Section -->
+            <section class="section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <i class="fas fa-star"></i>
+                            Featured Stories
+                        </h2>
+                        <a href="#library" class="view-all" data-page="library">View All <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="books-grid" id="featured-books"></div>
+                </div>
+            </section>
+
+            <!-- Trending Section -->
+            <section class="section section-alt">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <i class="fas fa-fire"></i>
+                            Trending Now
+                        </h2>
+                        <a href="#library" class="view-all" data-page="library">View All <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="books-grid" id="trending-books"></div>
+                </div>
+            </section>
+
+            <!-- Genres Section -->
+            <section class="section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <i class="fas fa-layer-group"></i>
+                            Browse by Genre
+                        </h2>
+                    </div>
+                    <div class="genres-grid" id="genres-grid"></div>
+                </div>
+            </section>
+
+            <!-- Newsletter Section -->
+            <section class="section section-newsletter">
+                <div class="container">
+                    <div class="newsletter-content">
+                        <div class="newsletter-text">
+                            <h2><i class="fas fa-envelope"></i> Stay Updated</h2>
+                            <p>Subscribe to get the latest stories, author updates, and exclusive content delivered to your inbox.</p>
+                        </div>
+                        <form class="newsletter-form" id="newsletter-form">
+                            <input type="email" placeholder="Enter your email address" required>
+                            <button type="submit" class="btn-primary">
+                                <i class="fas fa-paper-plane"></i>
+                                Subscribe
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Stats Section -->
+            <section class="section section-stats">
+                <div class="container">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <i class="fas fa-book"></i>
+                            <h3 id="total-books-stat">1,000+</h3>
+                            <p>Amazing Stories</p>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-users"></i>
+                            <h3>50,000+</h3>
+                            <p>Active Readers</p>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-pen-fancy"></i>
+                            <h3>500+</h3>
+                            <p>Talented Authors</p>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-star"></i>
+                            <h3>4.8/5</h3>
+                            <p>Average Rating</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Library Page -->
+        <div id="library-page" class="page">
+            <section class="page-header">
+                <div class="container">
+                    <h1 class="page-title">Explore Our Library</h1>
+                    <p class="page-subtitle">Discover thousands of amazing stories across all genres</p>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container">
+                    <div class="library-filters">
+                        <div class="filter-group">
+                            <label for="genre-filter">Genre:</label>
+                            <select id="genre-filter" class="filter-select">
+                                <option value="">All Genres</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="sort-filter">Sort By:</label>
+                            <select id="sort-filter" class="filter-select">
+                                <option value="popular">Most Popular</option>
+                                <option value="recent">Recently Added</option>
+                                <option value="rating">Highest Rated</option>
+                                <option value="title">Title A-Z</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="status-filter">Status:</label>
+                            <select id="status-filter" class="filter-select">
+                                <option value="">All</option>
+                                <option value="completed">Completed</option>
+                                <option value="ongoing">Ongoing</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="library-content">
+                        <div class="books-grid" id="library-books"></div>
+                        <div class="pagination" id="pagination"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Book Detail Page -->
+        <div id="book-detail-page" class="page">
+            <section class="book-detail-hero">
+                <div class="container">
+                    <div class="book-detail-content" id="book-detail-content"></div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Reader Page -->
+        <div id="reader-page" class="page">
+            <div class="reader-container" id="reader-container"></div>
+        </div>
+
+        <!-- My Library Page -->
+        <div id="mylibrary-page" class="page">
+            <section class="page-header">
+                <div class="container">
+                    <h1 class="page-title">My Library</h1>
+                    <p class="page-subtitle">Your reading list and purchased books</p>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container">
+                    <div class="my-library-tabs">
+                        <button class="tab-btn active" data-tab="reading">
+                            <i class="fas fa-book-reader"></i>
+                            Currently Reading
+                        </button>
+                        <button class="tab-btn" data-tab="purchased">
+                            <i class="fas fa-shopping-bag"></i>
+                            Purchased Books
+                        </button>
+                        <button class="tab-btn" data-tab="favorites">
+                            <i class="fas fa-heart"></i>
+                            Favorites
+                        </button>
+                    </div>
+                    
+                    <div class="tab-content active" id="reading-content">
+                        <div class="books-grid" id="reading-books"></div>
+                    </div>
+                    <div class="tab-content" id="purchased-content">
+                        <div class="books-grid" id="purchased-books"></div>
+                    </div>
+                    <div class="tab-content" id="favorites-content">
+                        <div class="books-grid" id="favorites-books"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Profile Page -->
+        <div id="profile-page" class="page">
+            <section class="profile-section">
+                <div class="container">
+                    <div class="profile-card" id="profile-card"></div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Admin Dashboard Page -->
+        <div id="admin-page" class="page">
+            <section class="page-header" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+                <div class="container">
+                    <h1 class="page-title"><i class="fas fa-crown"></i> Admin Dashboard</h1>
+                    <p class="page-subtitle">Manage books, users, and platform content</p>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container">
+                    <div class="admin-tabs">
+                        <button class="admin-tab-btn active" data-tab="dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</button>
+                        <button class="admin-tab-btn" data-tab="upload"><i class="fas fa-upload"></i> Upload Book</button>
+                        <button class="admin-tab-btn" data-tab="pdf-upload"><i class="fas fa-file-pdf"></i> Upload PDF</button>
+                        <button class="admin-tab-btn" data-tab="pdf-verify"><i class="fas fa-check-circle"></i> Verify PDFs</button>
+                        <button class="admin-tab-btn" data-tab="manage"><i class="fas fa-tasks"></i> Manage Books</button>
+                        <button class="admin-tab-btn" data-tab="pdf-manage"><i class="fas fa-file-alt"></i> Manage PDFs</button>
+                        <button class="admin-tab-btn" data-tab="featured"><i class="fas fa-star"></i> Book of Week</button>
+                        <button class="admin-tab-btn" data-tab="contests"><i class="fas fa-trophy"></i> Contests</button>
+                        <button class="admin-tab-btn" data-tab="users"><i class="fas fa-users"></i> Users</button>
+                        <button class="admin-tab-btn" data-tab="messages"><i class="fas fa-envelope"></i> User Messages</button>
+                        <button class="admin-tab-btn" data-tab="reports"><i class="fas fa-flag"></i> Reports</button>
+                        <button class="admin-tab-btn" data-tab="analytics"><i class="fas fa-chart-line"></i> Analytics</button>
+                    </div>
+                    
+                    <div class="admin-content">
+                        <!-- Dashboard Tab -->
+                        <div class="admin-tab-content active" id="admin-dashboard-tab">
+                            <div class="admin-panel">
+                                <h2><i class="fas fa-tachometer-alt"></i> Admin Dashboard</h2>
+                                <div class="dashboard-stats">
+                                    <div class="stat-card">
+                                        <i class="fas fa-users"></i>
+                                        <h3 id="total-users-count">0</h3>
+                                        <p>Total Users</p>
+                                    </div>
+                                    <div class="stat-card">
+                                        <i class="fas fa-book"></i>
+                                        <h3 id="total-books-count">0</h3>
+                                        <p>Total Books</p>
+                                    </div>
+                                    <div class="stat-card">
+                                        <i class="fas fa-file-pdf"></i>
+                                        <h3 id="pending-pdf-count">0</h3>
+                                        <p>Pending PDFs</p>
+                                    </div>
+                                    <div class="stat-card">
+                                        <i class="fas fa-flag"></i>
+                                        <h3 id="reports-count">0</h3>
+                                        <p>Active Reports</p>
+                                    </div>
+                                </div>
+
+                                <div class="dashboard-quick-actions">
+                                    <h3>Quick Actions</h3>
+                                    <div class="quick-action-buttons">
+                                        <button class="btn-primary" onclick="switchAdminTab('upload')">
+                                            <i class="fas fa-upload"></i> Upload Book
+                                        </button>
+                                        <button class="btn-outline" onclick="switchAdminTab('pdf-upload')">
+                                            <i class="fas fa-file-pdf"></i> Upload PDF
+                                        </button>
+                                        <button class="btn-outline" onclick="switchAdminTab('pdf-verify')">
+                                            <i class="fas fa-check-circle"></i> Verify PDFs
+                                        </button>
+                                        <button class="btn-outline" onclick="switchAdminTab('users')">
+                                            <i class="fas fa-users"></i> Manage Users
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="dashboard-recent-activity">
+                                    <h3>Recent Activity</h3>
+                                    <div id="recent-activity-list" class="activity-list">
+                                        <div class="activity-item">
+                                            <i class="fas fa-spinner fa-spin"></i>
+                                            <span>Loading recent activity...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Upload Book Tab -->
+                        <div class="admin-tab-content" id="admin-upload-tab">
+                            <div class="admin-panel">
+                                <h2><i class="fas fa-book-medical"></i> Upload New Book</h2>
+                                <form id="admin-upload-form" class="admin-form">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label>Book Title *</label>
+                                            <input type="text" name="title" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Author Name *</label>
+                                            <input type="text" name="author" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label>Genre *</label>
+                                            <select name="genre" required>
+                                                <option value="">Select Genre</option>
+                                                <option value="Romance">Romance</option>
+                                                <option value="Fantasy">Fantasy</option>
+                                                <option value="Sci-Fi">Sci-Fi</option>
+                                                <option value="Mystery">Mystery</option>
+                                                <option value="Thriller">Thriller</option>
+                                                <option value="Horror">Horror</option>
+                                                <option value="Contemporary">Contemporary</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Price (USD) *</label>
+                                            <input type="number" name="price" step="0.01" min="0" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label>Cover Image URL *</label>
+                                        <input type="url" name="cover_url" required>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label>Synopsis *</label>
+                                        <textarea name="synopsis" rows="4" required></textarea>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label>Tags (comma separated)</label>
+                                        <input type="text" name="tags" placeholder="e.g. romance, drama, adventure">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label>Upload PDF Book File *</label>
+                                        <input type="file" name="pdf_file" accept=".pdf" required>
+                                        <small>Upload the complete book in PDF format</small>
+                                    </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label>Status</label>
+                                            <select name="status">
+                                                <option value="completed">Completed</option>
+                                                <option value="ongoing">Ongoing</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label style="display: flex; align-items: center; gap: 0.5rem;">
+                                                <input type="checkbox" name="featured">
+                                                <span>Feature on Homepage</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    
+                                    <button type="submit" class="btn-primary btn-large">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                        Upload Book
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                        
+                        <!-- Admin PDF Upload Tab -->
+                        <div class="admin-tab-content" id="admin-pdf-upload-tab">
+                            <div class="admin-panel">
+                                <h2><i class="fas fa-file-pdf"></i> Upload PDF Story</h2>
+                                <form id="admin-pdf-upload-form" class="admin-form">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label>Story Title *</label>
+                                            <input type="text" name="title" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Author Name *</label>
+                                            <input type="text" name="author" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label>Genre *</label>
+                                            <select name="genre" required>
+                                                <option value="">Select Genre</option>
+                                                <option value="Romance">Romance</option>
+                                                <option value="Fantasy">Fantasy</option>
+                                                <option value="Sci-Fi">Sci-Fi</option>
+                                                <option value="Mystery">Mystery</option>
+                                                <option value="Thriller">Thriller</option>
+                                                <option value="Horror">Horror</option>
+                                                <option value="Contemporary">Contemporary</option>
+                                                <option value="Christian">Christian</option>
+                                                <option value="Drama">Drama</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label>Cover Image URL</label>
+                                        <input type="url" name="cover_url" placeholder="https://...">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label>Description *</label>
+                                        <textarea name="description" rows="4" required></textarea>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label>Tags (comma separated)</label>
+                                        <input type="text" name="tags" placeholder="e.g. romance, drama, adventure">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label>Upload PDF File * (Max 50MB)</label>
+                                        <input type="file" name="pdf_file" accept=".pdf" required>
+                                        <small>Upload the complete story in PDF format</small>
+                                    </div>
+                                    
+                                    <button type="submit" class="btn-primary btn-large">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                        Upload PDF Story (Auto-Approved)
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                        
+                        <!-- PDF Verification Tab -->
+                        <div class="admin-tab-content" id="admin-pdf-verify-tab">
+                            <div class="admin-panel">
+                                <h2><i class="fas fa-check-circle"></i> Pending PDF Stories for Verification</h2>
+                                <div id="pending-pdf-stories-list"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- PDF Management Tab -->
+                        <div class="admin-tab-content" id="admin-pdf-manage-tab">
+                            <div class="admin-panel">
+                                <h2><i class="fas fa-file-alt"></i> Manage PDF Stories</h2>
+                                <div id="all-pdf-stories-list"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Contests Tab -->
+                        <div class="admin-tab-content" id="admin-contests-tab">
+                            <div class="admin-panel">
+                                <h2><i class="fas fa-trophy"></i> Story Contests</h2>
+                                <button class="btn-primary" onclick="showCreateContestForm()">
+                                    <i class="fas fa-plus"></i> Create New Contest
+                                </button>
+                                <div id="contests-list" style="margin-top: 2rem;"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Reports Tab -->
+                        <div class="admin-tab-content" id="admin-reports-tab">
+                            <div class="admin-panel">
+                                <h2><i class="fas fa-flag"></i> User Reports</h2>
+                                <div id="reports-list"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Other admin tabs will be populated dynamically -->
+                        <div class="admin-tab-content" id="admin-manage-tab"></div>
+                        <div class="admin-tab-content" id="admin-featured-tab"></div>
+                        <div class="admin-tab-content" id="admin-users-tab"></div>
+                        <div class="admin-tab-content" id="admin-messages-tab"></div>
+                        <div class="admin-tab-content" id="admin-analytics-tab"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- PDF Stories Library Page -->
+        <div id="pdf-library-page" class="page">
+            <section class="page-header" style="background: linear-gradient(135deg, #DC143C, #FF6347);">
+                <div class="container">
+                    <h1 class="page-title"><i class="fas fa-file-pdf"></i> PDF Story Library</h1>
+                    <p class="page-subtitle">Read approved PDF stories from our community</p>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container">
+                    <div class="library-filters">
+                        <div class="filter-group">
+                            <label for="pdf-genre-filter">Genre:</label>
+                            <select id="pdf-genre-filter" class="filter-select">
+                                <option value="">All Genres</option>
+                                <option value="Romance">Romance</option>
+                                <option value="Fantasy">Fantasy</option>
+                                <option value="Sci-Fi">Sci-Fi</option>
+                                <option value="Mystery">Mystery</option>
+                                <option value="Thriller">Thriller</option>
+                                <option value="Horror">Horror</option>
+                                <option value="Contemporary">Contemporary</option>
+                                <option value="Christian">Christian</option>
+                                <option value="Drama">Drama</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="pdf-sort-filter">Sort By:</label>
+                            <select id="pdf-sort-filter" class="filter-select">
+                                <option value="recent">Recently Added</option>
+                                <option value="popular">Most Popular</option>
+                                <option value="rating">Highest Rated</option>
+                                <option value="title">Title A-Z</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="library-content">
+                        <div class="books-grid" id="pdf-stories-grid"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- User PDF Upload Page -->
+        <div id="upload-story-page" class="page">
+            <section class="page-header" style="background: linear-gradient(135deg, #8E44AD, #C39BD3);">
+                <div class="container">
+                    <h1 class="page-title"><i class="fas fa-upload"></i> Upload Your Story</h1>
+                    <p class="page-subtitle">Share your PDF story with the community</p>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container">
+                    <div class="upload-story-card">
+                        <div class="info-box" style="background: var(--accent-pink); padding: 1.5rem; border-radius: var(--radius-md); margin-bottom: 2rem;">
+                            <h3><i class="fas fa-info-circle"></i> Submission Guidelines</h3>
+                            <ul style="margin: 1rem 0 0 1.5rem; line-height: 1.8;">
+                                <li>PDF files only (max 50MB)</li>
+                                <li>All stories must be reviewed and approved by admin before publication</li>
+                                <li>You will be notified when your story is approved or rejected</li>
+                                <li>Ensure your content follows community guidelines</li>
+                                <li>Inappropriate content will be rejected and may result in account suspension</li>
+                            </ul>
+                        </div>
+                        
+                        <form id="pdf-upload-form" class="admin-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Story Title *</label>
+                                    <input type="text" name="title" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Author Name</label>
+                                    <input type="text" name="author" placeholder="Leave blank to use your username">
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Genre *</label>
+                                    <select name="genre" required>
+                                        <option value="">Select Genre</option>
+                                        <option value="Romance">Romance</option>
+                                        <option value="Fantasy">Fantasy</option>
+                                        <option value="Sci-Fi">Sci-Fi</option>
+                                        <option value="Mystery">Mystery</option>
+                                        <option value="Thriller">Thriller</option>
+                                        <option value="Horror">Horror</option>
+                                        <option value="Contemporary">Contemporary</option>
+                                        <option value="Christian">Christian</option>
+                                        <option value="Drama">Drama</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Cover Image URL (Optional)</label>
+                                <input type="url" name="cover_url" placeholder="https://...">
+                                <small>Provide a cover image URL or a default will be used</small>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Story Description *</label>
+                                <textarea name="description" rows="5" required placeholder="Describe your story..."></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Tags (comma separated)</label>
+                                <input type="text" name="tags" placeholder="e.g. romance, drama, adventure">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Upload PDF File * (Max 50MB)</label>
+                                <input type="file" name="pdf_file" accept=".pdf" required>
+                                <small>Upload your complete story in PDF format</small>
+                            </div>
+                            
+                            <button type="submit" class="btn-primary btn-large">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                Submit Story for Review
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Forum Page -->
+        <div id="forum-page" class="page">
+            <section class="page-header" style="background: linear-gradient(135deg, #16A085, #1ABC9C);">
+                <div class="container">
+                    <h1 class="page-title"><i class="fas fa-comments"></i> Community Forum</h1>
+                    <p class="page-subtitle">Discuss stories, writing tips, and connect with other readers</p>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container">
+                    <div class="forum-categories">
+                        <button class="forum-category-btn active" data-category="">All Topics</button>
+                        <button class="forum-category-btn" data-category="general">General Discussion</button>
+                        <button class="forum-category-btn" data-category="writing">Writing Tips</button>
+                        <button class="forum-category-btn" data-category="romance">Romance</button>
+                        <button class="forum-category-btn" data-category="fantasy">Fantasy</button>
+                        <button class="forum-category-btn" data-category="scifi">Sci-Fi</button>
+                        <button class="forum-category-btn" data-category="feedback">Feedback</button>
+                    </div>
+                    
+                    <button class="btn-primary" onclick="showCreateThreadForm()" style="margin: 2rem 0;">
+                        <i class="fas fa-plus"></i> Create New Thread
+                    </button>
+                    
+                    <div id="forum-threads-list"></div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Contests Page -->
+        <div id="contests-page" class="page">
+            <section class="page-header" style="background: linear-gradient(135deg, #F39C12, #F1C40F);">
+                <div class="container">
+                    <h1 class="page-title"><i class="fas fa-trophy"></i> Story Contests</h1>
+                    <p class="page-subtitle">Vote for your favorite stories and win prizes</p>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container">
+                    <div id="active-contests-list"></div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Community/Social Feed Page -->
+        <div id="community-page" class="page">
+            <section class="page-header" style="background: linear-gradient(135deg, #FF6B35, #F093FB);">
+                <div class="container">
+                    <h1 class="page-title"><i class="fas fa-users"></i> Community</h1>
+                    <p class="page-subtitle">Connect with readers and writers</p>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container">
+                    <div class="community-layout">
+                        <!-- Create Post -->
+                        <div class="create-post-card">
+                            <h3><i class="fas fa-pen"></i> Share Your Thoughts</h3>
+                            <form id="create-post-form">
+                                <textarea placeholder="What's on your mind?" rows="3" id="post-content"></textarea>
+                                <div class="post-actions">
+                                    <button type="button" class="btn-icon" onclick="addEmoji()"><i class="far fa-smile"></i></button>
+                                    <button type="submit" class="btn-primary">
+                                        <i class="fas fa-paper-plane"></i> Post
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Posts Feed -->
+                        <div class="posts-feed" id="posts-feed"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Messages Page -->
+        <div id="messages-page" class="page">
+            <section class="page-header">
+                <div class="container">
+                    <h1 class="page-title"><i class="fas fa-envelope"></i> Messages</h1>
+                    <p class="page-subtitle">Chat with other users and admin</p>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container">
+                    <div class="messages-layout">
+                        <div class="conversations-list" id="conversations-list"></div>
+                        <div class="message-thread" id="message-thread"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Help Center Page -->
+        <div id="help-page" class="page">
+            <section class="page-header">
+                <div class="container">
+                    <h1 class="page-title"><i class="fas fa-question-circle"></i> Help Center</h1>
+                    <p class="page-subtitle">Find answers to common questions</p>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container">
+                    <div class="help-search">
+                        <input type="text" placeholder="Search for help..." id="help-search">
+                        <i class="fas fa-search"></i>
+                    </div>
+
+                    <div class="help-categories">
+                        <div class="help-category">
+                            <i class="fas fa-book-reader"></i>
+                            <h3>Getting Started</h3>
+                            <ul>
+                                <li><a href="#" onclick="showHelpArticle('signup')">How to create an account</a></li>
+                                <li><a href="#" onclick="showHelpArticle('reading')">How to read books online</a></li>
+                                <li><a href="#" onclick="showHelpArticle('download')">Downloading books</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="help-category">
+                            <i class="fas fa-credit-card"></i>
+                            <h3>Payments & Billing</h3>
+                            <ul>
+                                <li><a href="#" onclick="showHelpArticle('mtn')">Pay with MTN Mobile Money</a></li>
+                                <li><a href="#" onclick="showHelpArticle('airtel')">Pay with Airtel Money</a></li>
+                                <li><a href="#" onclick="showHelpArticle('refund')">Refund policy</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="help-category">
+                            <i class="fas fa-user-friends"></i>
+                            <h3>Community</h3>
+                            <ul>
+                                <li><a href="#" onclick="showHelpArticle('follow')">Following users</a></li>
+                                <li><a href="#" onclick="showHelpArticle('posts')">Creating posts</a></li>
+                                <li><a href="#" onclick="showHelpArticle('comments')">Commenting on books</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="help-category">
+                            <i class="fas fa-shield-alt"></i>
+                            <h3>Account & Security</h3>
+                            <ul>
+                                <li><a href="#" onclick="showHelpArticle('password')">Reset password</a></li>
+                                <li><a href="#" onclick="showHelpArticle('privacy')">Privacy settings</a></li>
+                                <li><a href="#" onclick="showHelpArticle('delete')">Delete account</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- FAQ Page -->
+        <div id="faq-page" class="page">
+            <section class="page-header">
+                <div class="container">
+                    <h1 class="page-title"><i class="fas fa-question"></i> Frequently Asked Questions</h1>
+                    <p class="page-subtitle">Quick answers to common questions</p>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container">
+                    <div class="faq-list" id="faq-list"></div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Contact Page -->
+        <div id="contact-page" class="page">
+            <section class="page-header">
+                <div class="container">
+                    <h1 class="page-title"><i class="fas fa-envelope"></i> Contact Admin</h1>
+                    <p class="page-subtitle">Send a message to the administrator</p>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container">
+                    <div class="contact-layout">
+                        <div class="contact-form-card">
+                            <h3><i class="fas fa-paper-plane"></i> Send Message</h3>
+                            <form id="contact-admin-form">
+                                <div class="form-group">
+                                    <label>Subject *</label>
+                                    <input type="text" name="subject" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Category *</label>
+                                    <select name="category" required>
+                                        <option value="">Select Category</option>
+                                        <option value="support">Technical Support</option>
+                                        <option value="payment">Payment Issue</option>
+                                        <option value="content">Content Report</option>
+                                        <option value="feedback">Feedback</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Message *</label>
+                                    <textarea name="message" rows="6" required></textarea>
+                                </div>
+                                <button type="submit" class="btn-primary btn-block">
+                                    <i class="fas fa-send"></i> Send Message
+                                </button>
+                            </form>
+                        </div>
+                        
+                        <div class="contact-info-card">
+                            <h3><i class="fas fa-info-circle"></i> Other Ways to Reach Us</h3>
+                            <div class="contact-methods">
+                                <div class="contact-method">
+                                    <i class="fas fa-envelope"></i>
+                                    <div>
+                                        <strong>Email</strong>
+                                        <p>support@myb.com</p>
+                                    </div>
+                                </div>
+                                <div class="contact-method">
+                                    <i class="fas fa-clock"></i>
+                                    <div>
+                                        <strong>Response Time</strong>
+                                        <p>Within 24 hours</p>
+                                    </div>
+                                </div>
+                                <div class="contact-method">
+                                    <i class="fas fa-comments"></i>
+                                    <div>
+                                        <strong>Live Chat</strong>
+                                        <p>Available Mon-Fri 9AM-5PM</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Auth Modal -->
+    <div class="modal" id="auth-modal">
+        <div class="modal-overlay auth-modal-overlay"></div>
+        <div class="modal-content auth-modal-content">
+            <button class="modal-close auth-modal-close" onclick="closeModal('auth-modal')">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="auth-container">
+                <div class="auth-logo-section">
+                    <div class="auth-logo-container">
+                        <img src="assets/myb-logo-full.jpg" alt="MYB Logo" class="auth-logo-image" id="auth-logo-img">
+                        <h1 class="auth-brand-title">MYB</h1>
+                        <p class="auth-brand-subtitle">Creative Writing & Storytelling</p>
+                    </div>
+                </div>
+                
+                <div class="auth-form-section">
+                    <div class="auth-tabs">
+                        <button class="auth-tab active" data-tab="signin">Sign In</button>
+                        <button class="auth-tab" data-tab="signup">Sign Up</button>
+                    </div>
+                    
+                    <!-- Sign In Form -->
+                    <form id="signin-form" class="auth-form active">
+                        <h2>Welcome Back!</h2>
+                        <p class="auth-subtitle">Sign in to continue your reading journey</p>
+                        
+                        <div class="form-group">
+                            <label for="signin-email">Email</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" id="signin-email" required placeholder="your@email.com">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="signin-password">Password</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="signin-password" required placeholder="••••••••">
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary btn-block">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Sign In
+                        </button>
+                        
+                        <div class="auth-divider">or</div>
+                        
+                        <button type="button" class="btn-outline btn-block">
+                            <i class="fab fa-google"></i>
+                            Continue with Google
+                        </button>
+                    </form>
+                    
+                    <!-- Sign Up Form -->
+                    <form id="signup-form" class="auth-form">
+                        <h2>Join MYB</h2>
+                        <p class="auth-subtitle">Create an account to start reading</p>
+                        
+                        <div class="form-group">
+                            <label for="signup-username">Username</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-user"></i>
+                                <input type="text" id="signup-username" required placeholder="Choose a username">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="signup-email">Email</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" id="signup-email" required placeholder="your@email.com">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="signup-password">Password</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="signup-password" required placeholder="••••••••">
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary btn-block">
+                            <i class="fas fa-user-plus"></i>
+                            Create Account
+                        </button>
+                        
+                        <div class="auth-divider">or</div>
+                        
+                        <button type="button" class="btn-outline btn-block">
+                            <i class="fab fa-google"></i>
+                            Sign up with Google
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div class="modal" id="payment-modal">
+        <div class="modal-overlay" onclick="closeModal('payment-modal')"></div>
+        <div class="modal-content modal-medium">
+            <button class="modal-close" onclick="closeModal('payment-modal')">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="payment-container" id="payment-container"></div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container"></div>
+
+    <!-- Notifications Dropdown -->
+    <div class="dropdown-panel" id="notifications-panel" style="display: none;">
+        <div class="dropdown-header">
+            <h3><i class="fas fa-bell"></i> Notifications</h3>
+            <button onclick="markAllNotificationsRead()" class="btn-text">Mark all read</button>
+        </div>
+        <div class="dropdown-content" id="notifications-content"></div>
+    </div>
+
+    <!-- Messages Dropdown -->
+    <div class="dropdown-panel" id="messages-panel" style="display: none;">
+        <div class="dropdown-header">
+            <h3><i class="fas fa-envelope"></i> Messages</h3>
+            <a href="#messages" onclick="navigateTo('messages')" class="btn-text">View all</a>
+        </div>
+        <div class="dropdown-content" id="messages-dropdown-content"></div>
+    </div>
+
+    <!-- Comment Modal -->
+    <div class="modal" id="comments-modal">
+        <div class="modal-overlay" onclick="closeModal('comments-modal')"></div>
+        <div class="modal-content modal-large">
+            <button class="modal-close" onclick="closeModal('comments-modal')">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="comments-container" id="comments-container"></div>
+        </div>
+    </div>
+
+    <!-- Emoji Picker Modal -->
+    <div class="emoji-picker" id="emoji-picker" style="display: none;">
+        <div class="emoji-grid" id="emoji-grid"></div>
+    </div>
+
+    <!-- Privacy Policy Modal -->
+    <div class="modal" id="privacy-modal">
+        <div class="modal-overlay" onclick="closeModal('privacy-modal')"></div>
+        <div class="modal-content modal-large">
+            <button class="modal-close" onclick="closeModal('privacy-modal')">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="legal-content">
+                <h2>Privacy Policy</h2>
+                <div class="legal-text" id="privacy-content"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms of Service Modal -->
+    <div class="modal" id="terms-modal">
+        <div class="modal-overlay" onclick="closeModal('terms-modal')"></div>
+        <div class="modal-content modal-large">
+            <button class="modal-close" onclick="closeModal('terms-modal')">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="legal-content">
+                <h2>Terms of Service</h2>
+                <div class="legal-text" id="terms-content"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <img src="https://www.genspark.ai/api/files/s/V1iPDOYw" alt="MYB Logo" class="footer-logo">
+                        <h3>MYB</h3>
+                    </div>
+                    <p class="footer-tagline">Creative Writing & Storytelling Platform</p>
+                    <p class="footer-description">Discover amazing stories from talented writers around the world. Read online for free or download for offline reading.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Explore</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home" onclick="navigateTo('home')">Home</a></li>
+                        <li><a href="#library" onclick="navigateTo('library')">Browse Library</a></li>
+                        <li><a href="#" onclick="filterByGenre('Romance')">Romance Stories</a></li>
+                        <li><a href="#" onclick="filterByGenre('Fantasy')">Fantasy Stories</a></li>
+                        <li><a href="#" onclick="filterByGenre('Sci-Fi')">Sci-Fi Stories</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <ul class="footer-links">
+                        <li><a href="#mylibrary" onclick="navigateTo('mylibrary')">My Library</a></li>
+                        <li><a href="#profile" onclick="navigateTo('profile')">My Profile</a></li>
+                        <li><a href="#pdf-library" onclick="navigateTo('pdf-library')">PDF Stories</a></li>
+                        <li><a href="#upload-story" onclick="navigateTo('upload-story')">Upload Story</a></li>
+                        <li><a href="#forum" onclick="navigateTo('forum')">Forum</a></li>
+                        <li><a href="#contests" onclick="navigateTo('contests')">Contests</a></li>
+                        <li><a href="#community" onclick="navigateTo('community')">Community Feed</a></li>
+                        <li><a href="#messages" onclick="navigateTo('messages')">Messages</a></li>
+                        <li><a href="#faq" onclick="navigateTo('faq')">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#help" onclick="navigateTo('help')">Help Center</a></li>
+                        <li><a href="#contact" onclick="navigateTo('contact')">Contact Admin</a></li>
+                        <li><a href="#" onclick="showPrivacyPolicy()">Privacy Policy</a></li>
+                        <li><a href="#" onclick="showTermsOfService()">Terms of Service</a></li>
+                        <li><a href="#contact" onclick="navigateTo('contact')">Report Content</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 MYB - Creative Writing & Storytelling. All rights reserved.</p>
+                <p>Made with <i class="fas fa-heart"></i> for book lovers everywhere</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/app.js" defer></script> <!-- Core app logic, must be first -->
+    <script src="js/enhanced-features.js" defer></script> <!-- Extends AppState, defines constants -->
+    <script src="js/social-features.js" defer></script> <!-- Depends on app.js and enhanced-features.js -->
+    <script src="js/pdf-features.js" defer></script> <!-- Depends on app.js -->
+    <script src="js/admin-ui.js" defer></script> <!-- Depends on pdf-features.js -->
+    <script src="js/public-ui.js" defer></script> <!-- Depends on pdf-features.js -->
+</body>
+</html>
